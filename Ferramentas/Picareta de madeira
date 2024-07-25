@@ -14,8 +14,8 @@ func _on_ataque_area_entered(area):
 	if area.is_in_group("pedra"):
 		jogador.inventario_recurssos["pedra"] += 1
 		pedra.vida -= int(rng.randi_range(20, 40))
-        durabilidade -= 2
+      		durabilidade -= 2
 		print(jogador.inventario_recurssos)
 		print(pedra.vida)
-        print(durabilidade)
+        	print(durabilidade)
 
