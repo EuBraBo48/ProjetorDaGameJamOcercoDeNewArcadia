@@ -1,0 +1,21 @@
+extends Area2D
+
+var durabilidade: int = 20
+var rng = RandomNumberGenerator.new()
+var jogador: KinematicBody2D
+var pedra: Area2D
+
+func _ready():
+	jogador = get_parent().get_node("jogador")
+	pedra = get_parent().get_node("pedra")
+	rng.randomize()
+
+func _on_ataque_area_entered(area):
+	if area.is_in_group("pedra"):
+		jogador.inventario_recurssos["pedra"] += 1
+		pedra.vida -= int(rng.randi_range(20, 40))
+        durabilidade -= 2
+		print(jogador.inventario_recurssos)
+		print(pedra.vida)
+        print(durabilidade)
+
