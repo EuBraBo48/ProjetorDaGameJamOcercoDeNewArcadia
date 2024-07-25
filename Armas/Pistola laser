@@ -1,0 +1,32 @@
+extends Area2D
+
+
+var esta_atirando: bool = false
+var inimigo: RigidBody2D
+var pode_atirar: bool = false
+
+func _ready():
+	inimigo = get_parent().get_node("inimigo")
+	get_node("laser").hide()
+
+func _process(delta):
+	if Input.is_action_pressed("atirar") and pode_atirar:
+		get_node("laser").show()
+		esta_atirando = true
+	if Input.is_action_just_released("atirar"):
+		get_node("laser").hide()
+		esta_atirando = false
+
+func _on_dano_body_entered(body):
+	if body.is_in_group("inimigo") and esta_atirando:
+		inimigo = body
+		inimigo.vida -= 20
+		print(inimigo.vida)
+
+func _on_arma_laser_body_entered(body):
+	if body.is_in_group("jogador"):
+		pode_atirar = true
+
+func _on_arma_laser_body_exited(body):
+	if body.is_in_group("jogador"):
+		pode_atirar = false
