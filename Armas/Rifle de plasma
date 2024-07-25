@@ -1,0 +1,60 @@
+extends Area2D
+
+
+var projetil = preload("res://cenas/slime médio.tscn")
+export var velocidade: int = 1000
+var pode_atirar: bool = true
+export var cadencia: float = 0.5
+export var velocidade_de_recarga: float = 1.5
+var coletada: bool = false
+var jogador = null
+var municao_no_pente: int = 7
+
+func _process(delta):
+	if Input.is_action_just_pressed("atirar") and pode_atirar and coletada:
+		atirar()
+	if Input.is_action_just_pressed("recarregar") and jogador and jogador.inventario["slime leve"] > 0 and municao_no_pente < 7:
+		recarregar()
+
+func atirar():
+	if municao_no_pente > 1:
+		municao_no_pente -= 1
+		var copia_do_projetil = projetil.instance()
+		copia_do_projetil.position = $Position2D.global_position
+		copia_do_projetil.rotation_degrees = global_rotation_degrees
+		var direction = Vector2(1, 0).rotated(global_rotation)
+		copia_do_projetil.apply_impulse(Vector2(), direction * velocidade)
+		get_tree().get_root().add_child(copia_do_projetil)
+		pode_atirar = false
+		yield(get_tree().create_timer(cadencia), "timeout")
+		pode_atirar = true
+		print(municao_no_pente)
+	else:
+		print("Sem munição")
+
+func _on_Rifle_de_plasma_body_entered(body):
+	if body.is_in_group("jogador"):
+		jogador = body
+		coletada = true
+
+func _on_Rifle_de_plasma_body_exited(body):
+	if body.is_in_group("jogador"):
+		jogador = null
+		coletada = false
+
+func recarregar():
+	var needed_ammo = 7 - municao_no_pente
+	if jogador.inventario["slime leve"] >= needed_ammo:
+		jogador.inventario["slime leve"] -= needed_ammo
+		yield(get_tree().create_timer(velocidade_de_recarga), "timeout")
+		municao_no_pente = 7
+	else:
+		yield(get_tree().create_timer(velocidade_de_recarga), "timeout")
+		municao_no_pente += jogador.inventario["slime leve"]
+		jogador.inventario["slime leve"] = 0
+	print("arma recarregada")
+	print("slime leve: " + str(jogador.inventario["slime leve"]))
+
+func set_jogador(jogador_ref):
+	jogador = jogador_ref
+
