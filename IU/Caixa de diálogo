@@ -1,0 +1,35 @@
+extends NinePatchRect
+
+# Tenha certeza de ter esses nós na cena
+onready var texto := $Tetx
+onready var timer = $Timer
+
+var lista_de_mensagens = [
+	"Essa é a caixa de diálogo do jogo",
+	"1° Teste",
+	"2° teste",
+	"3° teste"
+]
+
+func _ready():
+	mostrar_mensagem()
+
+func _input(event):
+	if event is InputEventKey and event.is_action_pressed("continuar diálogo"):
+		mostrar_mensagem()
+
+func mostrar_mensagem():
+	if lista_de_mensagens.size() == 0:
+		hide()
+		return
+	var mensagem: String = lista_de_mensagens.pop_front()
+	texto.visible_characters = 0
+	texto.bbcode_text = mensagem
+	print(lista_de_mensagens)
+	timer.start()
+
+
+func _on_Timer_timeout():
+	if texto.visible_characters == texto.bbcode_text.length():
+		timer.stop()
+	texto.visible_characters += 1
