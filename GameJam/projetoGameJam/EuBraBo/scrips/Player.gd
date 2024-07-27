@@ -3,24 +3,52 @@ extends KinematicBody2D
 onready var animation: AnimationPlayer = get_node("Animation")
 onready var sprite__player:Sprite = get_node("Sprite_Player")
 
+
+#varives para barras em geral
+var health := 100.0
+var max_health := 100.0
+var health_recovery :=3.5
+
+var hunger := 100.0
+var max_hunger := 100.0
+var hunger_recorvey := 3.5
+
+
+#sinal para barra 
+signal player_stats_changer 
+
+
+
 #variaves da movintação do player top dawn
 var playe : Vector2 = Vector2(0, 0)
 var velocity: Vector2 = Vector2(0, 0)
 export(int) var speed
 
 
+func _ready():
+	pass
+	
+
 func _process(delta):
 	mov_play() # aqui e a movinentsção do player top dawn
-
+	emit_signal("player_stats_changer")
+	
+	
+	var new_health = min(health + health_recovery * delta, max_health) 
+	if new_health != health and hunger == 100:
+		print('to com fome')
+		health = new_health
+		emit_signal("player_stats_changer",self)
+		#print("testevida")
 
 func _physics_process(_delta:float) ->void:
 	animete() #Aqui e  função da minha animação
 	verify_direction() #Aqui e para espelha o personages 
 	
-
 func mov_play() -> void:
 	if Input.is_action_pressed("mv_direito"):
 		playe.x = 1
+		
 	elif Input.is_action_pressed("mv_esquerda"):
 		playe.x = -1
 	elif Input.is_action_pressed("mv_cima"):
@@ -38,8 +66,10 @@ func mov_play() -> void:
 func animete() -> void:
 	if velocity != Vector2.ZERO:
 		animation.play("run")
+		$PassosPlayer.play() #aqui é son de passo do player
 	else:
-		animation.play("Idle")	
+		animation.play("Idle")
+		$PassosPlayer.stop() #aqui é son do passo do player
 		
 
 func verify_direction() -> void:
@@ -49,3 +79,23 @@ func verify_direction() -> void:
 		sprite__player.flip_h = true			 	
 			
 #falta o dash para fimaniza a movintação total do nosso pleyer
+
+
+
+		
+ #func damo() -> void:
+	#if Input.is_action_pressed("mv_baixo"):	 SOR EDITA AQUI QUANDO TIVER IMINIGOS 
+		#	if health >=  10:
+		#		health = health - 10
+		#		print("damo")
+		#		print(health)
+		#		emit_signal("player_stats_changer",self)
+		
+# isso e temporaio 
+func _unhandled_input(event):
+	if event.is_action_pressed("mv_baixo"):	
+		if health >=  10:
+				health = health - 10
+				print("damo")
+				print(health)
+				emit_signal("player_stats_changer",self)		

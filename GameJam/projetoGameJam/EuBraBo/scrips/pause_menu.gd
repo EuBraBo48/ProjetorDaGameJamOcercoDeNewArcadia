@@ -14,6 +14,7 @@ func _unhandled_input(event):
 		get_tree().paused = true
 		resume_btn.grab_focus()
 
+
 func _on_resume_btn_pressed():
 	get_tree().paused = false
 	visible = false
@@ -21,3 +22,4 @@ func _on_resume_btn_pressed():
 
 func _on_quit_btn_pressed():
 	get_tree().quit()
+	

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/selecionar-1.ogg-e1d4cc193fedb7bb5e820868d5176ff1.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/selecionar-1.ogg"
+dest_files=[ "res://.import/selecionar-1.ogg-e1d4cc193fedb7bb5e820868d5176ff1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

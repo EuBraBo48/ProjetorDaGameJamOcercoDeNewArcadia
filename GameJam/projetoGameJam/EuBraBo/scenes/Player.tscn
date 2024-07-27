@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://EuBraBo/assets/Player/PlayerIddle.png" type="Texture" id=1]
 [ext_resource path="res://EuBraBo/scrips/Player.gd" type="Script" id=2]
 [ext_resource path="res://EuBraBo/assets/Player/PlayerRun.png" type="Texture" id=3]
 [ext_resource path="res://EuBraBo/assets/Player/PlayerRoll.png" type="Texture" id=4]
 [ext_resource path="res://EuBraBo/assets/Player/PlayerDeath.png" type="Texture" id=5]
+[ext_resource path="res://EuBraBo/Sounds/Passos.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -275,6 +276,10 @@ extents = Vector2( 7.625, 8.875 )
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 60
+
+[node name="PassosPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.228
 
 [node name="Sprite_Player" type="Sprite" parent="."]
 position = Vector2( 194, 91 )
