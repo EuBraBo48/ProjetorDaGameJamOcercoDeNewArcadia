@@ -13,6 +13,11 @@ var hunger := 100.0
 var max_hunger := 100.0
 var hunger_recorvey := 3.5
 
+var water := 100.0
+var max_water := 100.0
+var water_recorvery := 3.5
+
+var stamina
 
 #sinal para barra 
 signal player_stats_changer 
@@ -35,7 +40,7 @@ func _process(delta):
 	
 	
 	var new_health = min(health + health_recovery * delta, max_health) 
-	if new_health != health and hunger == 100:
+	if new_health != health and hunger == 100 and water == 100:
 		print('to com fome')
 		health = new_health
 		emit_signal("player_stats_changer",self)

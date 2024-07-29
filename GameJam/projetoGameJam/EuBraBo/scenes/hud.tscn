@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://EuBraBo/assets/HUD/StatsBars/HealthBar/HealthBarUnder.png" type="Texture" id=1]
 [ext_resource path="res://EuBraBo/scrips/hud.gd" type="Script" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://EuBraBo/assets/HUD/StatsBars/HungerBar/HungerBarUnder.png" type="Texture" id=6]
 [ext_resource path="res://EuBraBo/assets/HUD/StatsBars/HungerBar/HungerBarProgress.png" type="Texture" id=7]
 [ext_resource path="res://EuBraBo/assets/HUD/StatsBars/OverBarBase.png" type="Texture" id=8]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/WaterBar/WaterBarUnder.png" type="Texture" id=9]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/WaterBar/WaterIcon.png" type="Texture" id=10]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/WaterBar/WaterBarProgress.png" type="Texture" id=11]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/StaminaBar/StaminaBarProgress.png" type="Texture" id=12]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/StaminaBar/StaminaBarUnder.png" type="Texture" id=13]
+[ext_resource path="res://EuBraBo/assets/HUD/StatsBars/StaminaBar/StaminaIcon.png" type="Texture" id=14]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -37,7 +43,7 @@ texture_over = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="hunger_bar"]
-position = Vector2( -3, 4 )
+position = Vector2( -4, 4 )
 scale = Vector2( 0.45, 0.522727 )
 texture = ExtResource( 5 )
 
@@ -45,4 +51,39 @@ texture = ExtResource( 5 )
 wait_time = 10.0
 autostart = true
 
+[node name="water_bar" type="TextureProgress" parent="."]
+margin_left = 8.0
+margin_top = 23.0
+margin_right = 68.0
+margin_bottom = 32.0
+value = 100.0
+texture_under = ExtResource( 9 )
+texture_over = ExtResource( 8 )
+texture_progress = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="water_bar"]
+position = Vector2( -5, 4 )
+scale = Vector2( 0.638889, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="water_bar"]
+wait_time = 10.0
+autostart = true
+
+[node name="stamina_bar" type="TextureProgress" parent="."]
+margin_left = 8.0
+margin_top = 36.0
+margin_right = 68.0
+margin_bottom = 76.0
+value = 100.0
+texture_under = ExtResource( 13 )
+texture_over = ExtResource( 8 )
+texture_progress = ExtResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="stamina_bar"]
+position = Vector2( -5, 5 )
+scale = Vector2( 0.611111, 0.583333 )
+texture = ExtResource( 14 )
+
 [connection signal="timeout" from="hunger_bar/Timer" to="." method="re_fome"]
+[connection signal="timeout" from="water_bar/Timer" to="." method="water_bar"]
