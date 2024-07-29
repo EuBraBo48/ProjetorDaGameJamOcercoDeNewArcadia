@@ -1,0 +1,30 @@
+extends Node2D
+
+
+var projetil = preload("res://cenas/slime médio.tscn")
+export var velocidade: int = 1000
+var pode_atirar: bool = true
+export var velocidade_de_recarga: float = 1.0
+var inimigo_na_area: bool = false
+
+func _process(delta):
+	if pode_atirar and inimigo_na_area:
+		atirar_no_inimigo()
+
+func atirar_no_inimigo():
+	if pode_atirar:
+		var copia_do_projetil = projetil.instance()
+		copia_do_projetil.position = $Position2D.global_position
+		copia_do_projetil.rotation_degrees = global_rotation_degrees
+		var direction = Vector2(1, 0).rotated(global_rotation)
+		copia_do_projetil.apply_impulse(Vector2(), direction * velocidade)
+		get_tree().get_root().add_child(copia_do_projetil)
+		pode_atirar = false
+		yield(get_tree().create_timer(velocidade_de_recarga), "timeout")
+		pode_atirar = true
+
+func _on_Alcance_body_entered(body):
+	if body.is_in_group("inimigo"):
+		inimigo_na_area = true
+		look_at(body.global_position)
+		atirar_no_inimigo()
