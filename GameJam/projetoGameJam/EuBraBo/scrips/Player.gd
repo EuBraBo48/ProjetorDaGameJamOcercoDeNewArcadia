@@ -17,7 +17,9 @@ var water := 100.0
 var max_water := 100.0
 var water_recorvery := 3.5
 
-var stamina
+var stamina := 100.0
+var max_stamina := 100.0
+var stamina_recorvey := 1.0
 
 #sinal para barra 
 signal player_stats_changer 
@@ -37,6 +39,7 @@ func _ready():
 func _process(delta):
 	mov_play() # aqui e a movinentsção do player top dawn
 	emit_signal("player_stats_changer")
+
 	
 	
 	var new_health = min(health + health_recovery * delta, max_health) 
@@ -45,7 +48,13 @@ func _process(delta):
 		health = new_health
 		emit_signal("player_stats_changer",self)
 		#print("testevida")
-
+	var new_stamina = min(stamina +  stamina_recorvey * delta, max_stamina)
+	if new_stamina != stamina:
+		print("teste")
+		stamina = new_stamina
+		emit_signal("player_stats_changer")
+	
+	
 func _physics_process(_delta:float) ->void:
 	animete() #Aqui e  função da minha animação
 	verify_direction() #Aqui e para espelha o personages 
@@ -69,9 +78,10 @@ func mov_play() -> void:
 		
 
 func animete() -> void:
-	if velocity != Vector2.ZERO:
+	if velocity != Vector2.ZERO :
 		animation.play("run")
 		$PassosPlayer.play() #aqui é son de passo do player
+		
 	else:
 		animation.play("Idle")
 		$PassosPlayer.stop() #aqui é son do passo do player
@@ -104,3 +114,12 @@ func _unhandled_input(event):
 				print("damo")
 				print(health)
 				emit_signal("player_stats_changer",self)		
+func stamina_bar() -> void:
+	if Input.is_action_just_pressed("mv_dash") and stamina > 2: 
+		speed = 300
+		stamina -= 15
+		animation.play("roll")
+	elif Input.is_action_just_released("mv_dash"):
+		speed = 60
+		
+	
