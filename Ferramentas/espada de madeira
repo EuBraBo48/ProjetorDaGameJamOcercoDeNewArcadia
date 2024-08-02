@@ -1,0 +1,33 @@
+extends Area2D
+
+var durabilidade: int = 20
+var rng = RandomNumberGenerator.new()
+var jogador: KinematicBody2D
+var inimigos: Array = []
+
+func _ready():
+	jogador = get_parent().get_node("jogador")
+	rng.randomize()
+	
+	var world = get_parent()
+	for child in world.get_children():
+		if child.is_in_group("inimigo"):
+			pedras.append(child)
+
+func _process(delta):
+	if durabilidade <= 0:
+		self.queue_free()
+	
+	if Input.is_action_just_pressed("atirar"):
+		atacar()
+
+func atacar():
+	for inimigo in inimigo:
+		if inimigo and is_instance_valid(inimigo):
+			inimigo.vida -= int(rng.randi_range(20, 40))
+			durabilidade -= 2
+			print(inimigo.vida)
+			print(durabilidade)
+			if pedra.vida <= 0:
+				pedras.erase(pedra)
+			break
