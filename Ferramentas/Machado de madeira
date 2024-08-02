@@ -1,0 +1,38 @@
+extends Area2D
+
+var durabilidade: int = 20
+var rng = RandomNumberGenerator.new()
+var jogador: KinematicBody2D
+var arvores: Array = [] # Lista para armazenar referências às árvores
+
+func _ready():
+	jogador = get_parent().get_node("jogador")
+	rng.randomize()
+	
+	# Coletar todas as árvores na cena (assumindo que estão no mesmo nível do pai)
+	var world = get_parent()
+	for child in world.get_children():
+		if child.is_in_group("árvore"):
+			pedras.append(child)
+
+func _process(delta):
+	if durabilidade <= 0:
+		self.queue_free()
+	
+	# Verifica se a tecla de ataque é pressionada
+	if Input.is_action_just_pressed("atirar"):
+		atacar()
+
+func atacar():
+	for arvore in arvore:
+		if arvore and is_instance_valid(arvore): # Verifica se a árvore ainda é válida
+			jogador.inventario_recurssos["árvore"] += 1
+			arvore.vida -= int(rng.randi_range(20, 40))
+			durabilidade -= 2
+			print(jogador.inventario_recurssos)
+			print(arvore.vida)
+			print(durabilidade)
+			# Caso queira remover uma árvore destruída da lista
+			if arvore.vida <= 0:
+				arvore.erase(pedra)
+			break # Atacar apenas uma árvore por vez
