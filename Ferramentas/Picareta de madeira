@@ -1,123 +1,38 @@
-extends KinematicBody2D
+extends Area2D
 
-export var velocidade: int = 100
-var direcao: Vector2 = Vector2(0, 0)
-var pode_coletar = false
-var item = null
-var item_equipado = null
+var durabilidade: int = 20
 var rng = RandomNumberGenerator.new()
-var inventario = {"slime leve": 0, "slime médio": 0}
-var inventario_armas = []
-var inventario_recurssos = {"pedra": 0}
+var jogador: KinematicBody2D
+var pedras: Array = [] # Lista para armazenar referências às pedras
 
 func _ready():
+	jogador = get_parent().get_node("jogador")
 	rng.randomize()
+	
+	# Coletar todas as pedras na cena (assumindo que estão no mesmo nível do pai)
+	var world = get_parent()
+	for child in world.get_children():
+		if child.is_in_group("pedra"):
+			pedras.append(child)
 
 func _process(delta):
-	movimento()
-	look_at(get_global_mouse_position())
-	if Input.is_action_just_pressed("coletar") and pode_coletar:
-		coletar()
-	if Input.is_action_just_pressed("soltar item") and item_equipado:
-		soltar()
-	if Input.is_action_just_pressed("equipar arma 1"):
-		equipar(0)
-	if Input.is_action_just_pressed("equipar arma 2"):
-		equipar(1)
-	if Input.is_action_just_pressed("equipar arma 3"):
-		equipar(2)
-	if Input.is_action_just_pressed("equipar arma 4"):
-		equipar(3)
-	if Input.is_action_just_pressed("equipar arma 5"):
-		equipar(4)
-	if Input.is_action_pressed("correr"):
-		correr()
-	if Input.is_action_just_released("correr"):
-		parar_de_correr()
+	if durabilidade <= 0:
+		self.queue_free()
+	
+	# Verifica se a tecla de ataque é pressionada
+	if Input.is_action_just_pressed("atirar"):
+		atacar()
 
-func movimento() -> void:
-	direcao = Vector2.ZERO
-	if Input.is_action_pressed("direita"):
-		direcao.x += 1
-	if Input.is_action_pressed("esquerda"):
-		direcao.x -= 1
-	if Input.is_action_pressed("baixo"):
-		direcao.y += 1
-	if Input.is_action_pressed("cima"):
-		direcao.y -= 1
-	direcao = direcao.normalized()
-	move_and_slide(direcao * velocidade)
-
-func coletar():
-	if item and item.is_in_group("arma"):
-		if len(inventario_armas) < 5:
-			inventario_armas.append(item)
-			item.hide()
-			item = null
-			pode_coletar = false
-			print("Item coletado")
-			print(inventario_armas)
-		else:
-			print("Inventário de armas cheio")
-
-func equipar(espaco):
-	pode_coletar = false
-	if espaco < len(inventario_armas):
-		if item_equipado:
-			desequipar()
-		item_equipado = inventario_armas[espaco]
-		var mao = get_node("mão")
-		item_equipado.show()
-		if item_equipado.get_parent() != null:
-			item_equipado.get_parent().remove_child(item_equipado)
-		mao.add_child(item_equipado)
-		item_equipado.position = Vector2.ZERO
-		print("Arma equipada: " + str(espaco))
-	else:
-		print("Nenhuma arma no slot " + str(espaco))
-
-func desequipar():
-	if item_equipado:
-		var mao = get_node("mão")
-		mao.remove_child(item_equipado)
-		item_equipado.hide()
-		inventario_armas.append(item_equipado)
-		item_equipado = null
-		print("Arma desequipada")
-
-func _on_coleta_area_entered(area):
-	item = area
-	if item.is_in_group("arma") and item != item_equipado:
-		pode_coletar = true
-		print("pode coletar")
-	elif item.is_in_group("slime médio"):
-		inventario["slime médio"] += int(rng.randi_range(1, 15))
-		item.queue_free()
-		print(inventario)
-	elif item.is_in_group("slime leve"):
-		inventario["slime leve"] += int(rng.randf_range(15, 40))
-		item.queue_free()
-		print(inventario)
-
-func _on_coleta_area_exited(area):
-	item = area
-	pode_coletar = false
-	print("Você não pode mais coletar")
-
-func soltar():
-	if item_equipado:
-		var mao = get_node("mão")
-		mao.remove_child(item_equipado)
-		item_equipado.global_position = mao.global_position
-		get_parent().add_child(item_equipado)
-		item_equipado.show()
-		inventario_armas.erase(item_equipado)
-		item_equipado = null
-		print("Item solto")
-		print(inventario_armas)
-
-func correr():
-	velocidade = 200
-
-func parar_de_correr():
-	velocidade = 100
+func atacar():
+	for pedra in pedras:
+		if pedra and is_instance_valid(pedra): # Verifica se a pedra ainda é válida
+			jogador.inventario_recurssos["pedra"] += 1
+			pedra.vida -= int(rng.randi_range(20, 40))
+			durabilidade -= 2
+			print(jogador.inventario_recurssos)
+			print(pedra.vida)
+			print(durabilidade)
+			# Caso queira remover uma pedra destruída da lista
+			if pedra.vida <= 0:
+				pedras.erase(pedra)
+			break # Atacar apenas uma pedra por vez
