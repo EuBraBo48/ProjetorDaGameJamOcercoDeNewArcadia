@@ -41,13 +41,12 @@ func _process(delta):
 	emit_signal("player_stats_changer")
 
 	
-	
+	#aquie regeneração da vida e da stamina falta a fome que tem qeu come e a agua	
 	var new_health = min(health + health_recovery * delta, max_health) 
 	if new_health != health and hunger == 100 and water == 100:
 		print('to com fome')
 		health = new_health
 		emit_signal("player_stats_changer",self)
-		#print("testevida")
 	var new_stamina = min(stamina +  stamina_recorvey * delta, max_stamina)
 	if new_stamina != stamina:
 		print("teste")
@@ -93,7 +92,7 @@ func verify_direction() -> void:
 	elif velocity.x < 0:
 		sprite__player.flip_h = true			 	
 			
-#falta o dash para fimaniza a movintação total do nosso pleyer
+
 
 
 
@@ -114,6 +113,7 @@ func _unhandled_input(event):
 				print("damo")
 				print(health)
 				emit_signal("player_stats_changer",self)		
+# aquie a dash do personagems				
 func stamina_bar() -> void:
 	if Input.is_action_just_pressed("mv_dash") and stamina > 2: 
 		speed = 300
