@@ -4,7 +4,8 @@ onready var anim_dia_noite = $AnimDiaNoite
 
 onready var dia = $dia   
 onready var noite = $noite
-onready var numero_dia = $numeroDias
+onready var numero_dias = $hubDeDias/numeroDias
+
 var dia4  = 0 # aqui está o dias 
 
 
@@ -23,6 +24,6 @@ func _on_noite_timeout():
 	dia.start()
 	print("testenoit")
 	anim_dia_noite.play("noite-dia")
-	numero_dia.text = str(dia4)
+	numero_dias.text = str(dia4)
 	
 	

@@ -21,5 +21,7 @@ func _on_resume_btn_pressed():
 
 
 func _on_quit_btn_pressed():
-	get_tree().quit()
+	get_tree().change_scene("res://EuBraBo/scenes/telaDeTilulo.tscn")
+	get_tree().paused = false
+	visible = false
 	

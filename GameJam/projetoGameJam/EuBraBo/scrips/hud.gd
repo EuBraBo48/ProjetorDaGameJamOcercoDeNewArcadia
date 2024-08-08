@@ -24,7 +24,7 @@ func _process(delta):
 func re_fome () ->  void:
 	print("teste fome ")
 	if player.hunger >=  10:
-			player.hunger = player.hunger - 10
+			player.hunger = player.hunger - 0.9
 			print("damo")
 			print(player.hunger)
 			emit_signal("player_stats_changer",self)	
@@ -35,7 +35,7 @@ func re_fome () ->  void:
 
 func water_bar() -> void:
 	if player.water >= 10:
-		player.water = player.water - 20
+		player.water = player.water - 0.9
 		emit_signal("player_stats_changer",self)
 		
 			

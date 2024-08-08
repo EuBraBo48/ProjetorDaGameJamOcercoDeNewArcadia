@@ -48,7 +48,7 @@ scale = Vector2( 0.45, 0.522727 )
 texture = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="hunger_bar"]
-wait_time = 10.0
+wait_time = 14.0
 autostart = true
 
 [node name="water_bar" type="TextureProgress" parent="."]
@@ -67,7 +67,7 @@ scale = Vector2( 0.638889, 0.5 )
 texture = ExtResource( 10 )
 
 [node name="Timer" type="Timer" parent="water_bar"]
-wait_time = 10.0
+wait_time = 14.0
 autostart = true
 
 [node name="stamina_bar" type="TextureProgress" parent="."]
