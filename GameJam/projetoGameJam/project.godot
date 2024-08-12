@@ -8,9 +8,56 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "CanvasLayer",
+"class": "Hud",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/hud.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Player.gd"
+}, {
+"base": "Control",
+"class": "TelaDeTitulo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/telaDeTilulo.gd"
+}, {
+"base": "Node2D",
+"class": "Tempo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/tempo.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ZumbiNormal",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiNormal.gd"
+}, {
+"base": "Node2D",
+"class": "gerado",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Gerador.gd"
+}, {
+"base": "CanvasLayer",
+"class": "pause_manu",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/pause_menu.gd"
+} ]
+_global_script_class_icons={
+"Hud": "",
+"Player": "",
+"TelaDeTitulo": "",
+"Tempo": "",
+"ZumbiNormal": "",
+"gerado": "",
+"pause_manu": ""
+}
+
 [application]
 
 config/name="jogoSemNoneGameJam"
+run/main_scene="res://EuBraBo/scenes/teas.tscn"
 config/icon="res://coisasEmGeral/icon.png"
 
 [display]
@@ -25,6 +72,8 @@ window/stretch/aspect="keep"
 [global]
 
 fon=false
+font=false
+fonte=false
 
 [gui]
 
@@ -94,7 +143,3 @@ mv_dash={
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://coisasEmGeral/default_env.tres"

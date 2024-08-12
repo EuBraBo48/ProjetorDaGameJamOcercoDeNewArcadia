@@ -1,4 +1,9 @@
 extends KinematicBody2D
+class_name Player
+
+#VARIAVES EM GERAL
+
+   
  #variaves da animação do player e Strite
 onready var animation: AnimationPlayer = get_node("Animation")
 onready var sprite__player:Sprite = get_node("Sprite_Player")
@@ -24,17 +29,15 @@ var stamina_recorvey := 1.0
 #sinal para barra 
 signal player_stats_changer 
 
-
-
 #variaves da movintação do player top dawn
 var playe : Vector2 = Vector2(0, 0)
 var velocity: Vector2 = Vector2(0, 0)
 export(int) var speed
 
-
+# FUNÇAOS GERAL
 func _ready():
 	pass
-	
+
 
 func _process(delta):
 	mov_play() # aqui e a movinentsção do player top dawn
@@ -52,12 +55,13 @@ func _process(delta):
 		print("teste")
 		stamina = new_stamina
 		emit_signal("player_stats_changer")
-	
-	
+
+
 func _physics_process(_delta:float) ->void:
 	animete() #Aqui e  função da minha animação
 	verify_direction() #Aqui e para espelha o personages 
-	
+
+# AQUI E A MOVINETAÇÃO DO PLAYER
 func mov_play() -> void:
 	if Input.is_action_pressed("mv_direito"):
 		playe.x = 1
@@ -74,9 +78,10 @@ func mov_play() -> void:
 		
 	velocity = playe.normalized()* speed
 	move_and_slide(velocity)	
-		
 
+# AQUI É AS ANIMAÇÃO EM GERAL DO PLAYER
 func animete() -> void:
+	
 	if velocity != Vector2.ZERO :
 		animation.play("run")
 		$PassosPlayer.play() #aqui é son de passo do player
@@ -84,36 +89,26 @@ func animete() -> void:
 	else:
 		animation.play("Idle")
 		$PassosPlayer.stop() #aqui é son do passo do player
-		
 
+#AQUI É VERIFICA A DIREÇÃO
 func verify_direction() -> void:
+	
 	if velocity.x > 0:
 		sprite__player.flip_h = false
 	elif velocity.x < 0:
 		sprite__player.flip_h = true			 	
-			
 
-
-
-
-		
- #func damo() -> void:
-	#if Input.is_action_pressed("mv_baixo"):	 SOR EDITA AQUI QUANDO TIVER IMINIGOS 
-		#	if health >=  10:
-		#		health = health - 10
-		#		print("damo")
-		#		print(health)
-		#		emit_signal("player_stats_changer",self)
-		
-# isso e temporaio 
-func _unhandled_input(event):
-	if event.is_action_pressed("mv_baixo"):	
-		if health >=  10:
-				health = health - 10
+#AQUI VAI SER AONDE O PLAYER PERDE VIDA
+func damo() -> void:
+	if health <= health:
+			if health >=  10:
+				health = health - 20
 				print("damo")
 				print(health)
-				emit_signal("player_stats_changer",self)		
-# aquie a dash do personagems				
+				emit_signal("player_stats_changer",self)
+
+
+# aquie a dash do personagems
 func stamina_bar() -> void:
 	if Input.is_action_just_pressed("mv_dash") and stamina > 2: 
 		speed = 300
@@ -121,5 +116,4 @@ func stamina_bar() -> void:
 		animation.play("roll")
 	elif Input.is_action_just_released("mv_dash"):
 		speed = 60
-		
-	
+

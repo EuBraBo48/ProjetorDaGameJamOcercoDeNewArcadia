@@ -1,13 +1,14 @@
 extends CanvasLayer
+class_name pause_manu
 
-
+#VARIAVES EM GERSL 
 onready var resume_btn = $menu_holder/resume_btn
 
-
+#FUNÇÃO EM GERAL
 func _ready():
 	visible = false
 
-
+ # ESSAS 3 FUNÇÃO SÃO PARA OS BUTÃO DO PAUSE 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		visible = true
