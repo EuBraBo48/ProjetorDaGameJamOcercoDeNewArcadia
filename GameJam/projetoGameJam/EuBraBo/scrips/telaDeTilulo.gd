@@ -2,12 +2,12 @@ extends Control
 class_name TelaDeTitulo
 
 #VARIAVES EM GERAL 
-onready var new_game = $CanvasDaTelaTitulo/VBoxContainer/newGame
+onready var v_box_container = $CanvasDaTelaTitulo/VBoxContainer
 
 #FUNÇÃO EM GERAL DOS BOTÃOS
 func _on_newGame_pressed():
 	get_tree().change_scene("res://EuBraBo/scenes/teas.tscn")
-	new_game.grab_focus()
+	v_box_container.grab_focus()
 
 
 func _on_continue_pressed():

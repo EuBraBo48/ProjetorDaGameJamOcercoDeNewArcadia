@@ -47,12 +47,12 @@ func _process(delta):
 	#aquie regeneração da vida e da stamina falta a fome que tem qeu come e a agua	
 	var new_health = min(health + health_recovery * delta, max_health) 
 	if new_health != health and hunger == 100 and water == 100:
-		print('to com fome')
+#		print('to com fome')
 		health = new_health
 		emit_signal("player_stats_changer",self)
 	var new_stamina = min(stamina +  stamina_recorvey * delta, max_stamina)
 	if new_stamina != stamina:
-		print("teste")
+#		print("teste")
 		stamina = new_stamina
 		emit_signal("player_stats_changer")
 
@@ -102,7 +102,7 @@ func verify_direction() -> void:
 func damo() -> void:
 	if health <= health:
 			if health >=  10:
-				health = health - 20
+				health = health - 4
 				print("damo")
 				print(health)
 				emit_signal("player_stats_changer",self)
