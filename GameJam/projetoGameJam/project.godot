@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://EuBraBo/scrips/hud.gd"
 }, {
+"base": "AnimatedSprite",
+"class": "Moeda",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Moeda.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -30,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://EuBraBo/scrips/tempo.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "ZumbiFogo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiFogo.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "ZumbiNormal",
 "language": "GDScript",
 "path": "res://EuBraBo/scrips/zumbiNormal.gd"
@@ -43,15 +53,29 @@ _global_script_classes=[ {
 "class": "pause_manu",
 "language": "GDScript",
 "path": "res://EuBraBo/scrips/pause_menu.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "zumbiExplosion",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiExplosion.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "zumbiTank",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiTank.gd"
 } ]
 _global_script_class_icons={
 "Hud": "",
+"Moeda": "",
 "Player": "",
 "TelaDeTitulo": "",
 "Tempo": "",
+"ZumbiFogo": "",
 "ZumbiNormal": "",
 "gerado": "",
-"pause_manu": ""
+"pause_manu": "",
+"zumbiExplosion": "",
+"zumbiTank": ""
 }
 
 [application]

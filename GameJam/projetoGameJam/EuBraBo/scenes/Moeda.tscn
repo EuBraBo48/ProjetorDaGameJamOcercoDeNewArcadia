@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://EuBraBo/assets/HUD/moeda_10.png" type="Texture" id=1]
+[ext_resource path="res://EuBraBo/scrips/Moeda.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "moeda",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 5.09902
+
+[node name="AnimatedSpriteMoeda" type="AnimatedSprite"]
+position = Vector2( 4.76837e-07, 0 )
+scale = Vector2( 1.75, 1.5 )
+frames = SubResource( 5 )
+animation = "moeda"
+playing = true
+script = ExtResource( 2 )
+
+[node name="colição" type="Area2D" parent="."]
+position = Vector2( 2.28571, 1.33333 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colição"]
+position = Vector2( -2.28572, -1.33333 )
+shape = SubResource( 6 )
+
+[connection signal="body_entered" from="colição" to="." method="_on_colio_body_entered"]

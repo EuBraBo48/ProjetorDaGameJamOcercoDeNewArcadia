@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://EuBraBo/scenes/hud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EuBraBo/scenes/pause_menu.tscn" type="PackedScene" id=2]
@@ -6,24 +6,26 @@
 [ext_resource path="res://EuBraBo/scenes/tempo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://EuBraBo/assets/HUD/DialogueHud/DialogueBox.png" type="Texture" id=5]
 [ext_resource path="res://EuBraBo/scenes/zumbiNormal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://EuBraBo/scenes/zumbiTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://EuBraBo/scrips/Gerador.gd" type="Script" id=8]
+[ext_resource path="res://EuBraBo/scenes/zumbiExplosion.tscn" type="PackedScene" id=9]
+[ext_resource path="res://EuBraBo/scenes/zumbiFogo.tscn" type="PackedScene" id=10]
+[ext_resource path="res://EuBraBo/scenes/Moeda.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 191, 96 )
-
 [node name="zumbiNormal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 80, 98 )
+position = Vector2( 673, 275 )
 player_path = NodePath("../Player")
 
 [node name="pause_menu" parent="." instance=ExtResource( 2 )]
+visible = true
 
 [node name="hud" parent="." instance=ExtResource( 1 )]
 player_path = NodePath("../Player")
 
 [node name="DialogueBox" type="Sprite" parent="."]
-position = Vector2( 391, 169 )
+position = Vector2( 385, 166 )
 texture = ExtResource( 5 )
 
 [node name="tempo" parent="." instance=ExtResource( 4 )]
@@ -31,3 +33,23 @@ texture = ExtResource( 5 )
 [node name="Gerador" type="Node2D" parent="."]
 position = Vector2( 72, 81 )
 script = ExtResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 271, 60 )
+
+[node name="zumbiTank" parent="." instance=ExtResource( 7 )]
+position = Vector2( -290, 276 )
+player_path = NodePath("../Player")
+
+[node name="zumbiExplosion" parent="." instance=ExtResource( 9 )]
+position = Vector2( 609, -31 )
+player_path = NodePath("../Player")
+
+[node name="zumbiFogo" parent="." instance=ExtResource( 10 )]
+position = Vector2( -214, -45 )
+player_path = NodePath("../Player")
+
+[node name="AnimatedSpriteMoeda" parent="." instance=ExtResource( 11 )]
+position = Vector2( 313, 122 )
+frame = 0
+hud_path = NodePath("../hud")

@@ -120,9 +120,9 @@ radius = 11.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 113.759
+radius = 113.991
 
-[node name="zumbiNormal" type="KinematicBody2D" groups=["inimigos"]]
+[node name="zumbiNormal" type="KinematicBody2D" groups=["inimigos1"]]
 script = ExtResource( 2 )
 textura_path = NodePath("textura")
 animZumbiN_path = NodePath("animZumbiN")
@@ -148,6 +148,7 @@ shape = SubResource( 7 )
 [node name="deterquito" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="deterquito"]
+position = Vector2( -1, 1 )
 rotation = 0.261799
 shape = SubResource( 8 )
 

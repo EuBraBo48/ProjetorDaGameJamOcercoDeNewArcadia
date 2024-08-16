@@ -79,6 +79,7 @@ wait_time = 180.0
 autostart = true
 
 [node name="hubDeDias" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="numeroDias" type="Label" parent="hubDeDias"]
 margin_left = 368.0

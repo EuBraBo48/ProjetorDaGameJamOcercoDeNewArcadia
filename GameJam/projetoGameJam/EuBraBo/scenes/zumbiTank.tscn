@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://EuBraBo/assets/inimigos/png-Sheet/tank_zombie-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://EuBraBo/scrips/zumbiTank.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Atack"
+length = 0.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "damage"
+length = 0.34
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23, 24, 25, 26 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ide"
+length = 1.22
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.68
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 9.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 171.237
+
+[node name="zumbiTank" type="KinematicBody2D" groups=["inimigos2"]]
+script = ExtResource( 2 )
+textura_path = NodePath("textura")
+animTank_path = NodePath("AnimTank")
+
+[node name="textura" type="Sprite" parent="."]
+position = Vector2( 7, 0 )
+scale = Vector2( 1.58333, 1.68269 )
+texture = ExtResource( 1 )
+hframes = 27
+
+[node name="AnimTank" type="AnimationPlayer" parent="."]
+autoplay = "ide"
+anims/Atack = SubResource( 5 )
+anims/RESET = SubResource( 1 )
+anims/damage = SubResource( 3 )
+anims/die = SubResource( 6 )
+anims/ide = SubResource( 2 )
+anims/run = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 7 )
+
+[node name="deterquito" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deterquito"]
+shape = SubResource( 8 )
+
+[connection signal="body_entered" from="deterquito" to="." method="_on_deterquito_body_entered"]
+[connection signal="body_exited" from="deterquito" to="." method="_on_deterquito_body_exited"]

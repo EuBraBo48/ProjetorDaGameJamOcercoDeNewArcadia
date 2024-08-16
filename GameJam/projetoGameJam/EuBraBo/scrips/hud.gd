@@ -7,6 +7,9 @@ onready var hunger_bar = $hunger_bar
 onready var water_bar = $water_bar
 onready var stamina_bar = $stamina_bar
 
+var NuMoedas : int = 0
+var NuOndas : int = 12
+
 
 export (NodePath) var player_path
 onready var player = get_node(player_path)
@@ -14,6 +17,9 @@ onready var player = get_node(player_path)
 #FUNÇÃO EM GERAL
 func _process(delta):
 	barras_geral()
+	moedas()
+	ondas()
+	
 
 #AQUI ESTÁ TODAS AS BARRAS DA HUD	
 func barras_geral() -> void:
@@ -26,9 +32,9 @@ func barras_geral() -> void:
 
 #AQUI E A BARRA DE FOME 
 func re_fome () ->  void:
-	print("teste fome ")
+#	print("teste fome ")
 	if player.hunger >=  10:
-			player.hunger = player.hunger - 0.9
+			player.hunger = player.hunger - 2.3
 			print("damo")
 			print(player.hunger)
 			emit_signal("player_stats_changer",self)	
@@ -36,5 +42,14 @@ func re_fome () ->  void:
 #AQUI E A BARRA DE SEDE
 func water_bar() -> void:
 	if player.water >= 10:
-		player.water = player.water - 0.9
+		player.water = player.water - 2
 		emit_signal("player_stats_changer",self)
+
+
+func moedas () -> void:
+	$AnimatedSpriteMoeda/LabelMoeda.text = str ( NuMoedas)
+	
+func ondas () -> void:
+	$ondas.text = ("Ondas numero " + str(NuOndas))
+
+	
