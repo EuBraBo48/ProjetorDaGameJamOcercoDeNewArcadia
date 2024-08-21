@@ -119,6 +119,7 @@ position = Vector2( 7, 0 )
 scale = Vector2( 1.58333, 1.68269 )
 texture = ExtResource( 1 )
 hframes = 27
+frame = 13
 
 [node name="AnimTank" type="AnimationPlayer" parent="."]
 autoplay = "ide"

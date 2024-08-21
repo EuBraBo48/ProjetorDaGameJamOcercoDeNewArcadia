@@ -13,16 +13,15 @@ var time_since_last_attack: float = 0.0  # Tempo desde o último ataque
 
 export (NodePath) var textura_path: NodePath
 export (NodePath) var animZumbiFogo_path: NodePath
-export (NodePath) var player_path: NodePath
 
 
 var textura: Sprite
 var animZumbiFogo: AnimationPlayer
-onready var player = get_node(player_path)
+
 
 
 func _ready() -> void:
-	_player_ref = player
+	_player_ref = _player_ref
 	if textura_path:
 		textura = get_node(textura_path) as Sprite
 	if animZumbiFogo_path:
@@ -53,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func animent() -> void:
-	if distancia < 50 and time_since_last_attack >= attack_delay  :  # Ajuste a distância conforme necessário
+	if distancia < 50 and time_since_last_attack >= attack_delay and _player_ref :  # Ajuste a distância conforme necessário
 		animZumbiFogo.play("atack")
 		if animZumbiFogo.current_animation_position >= 0.5:
 			_player_ref.damo()

@@ -14,15 +14,12 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="zumbiNormal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 673, 275 )
-player_path = NodePath("../Player")
-
 [node name="pause_menu" parent="." instance=ExtResource( 2 )]
 visible = true
 
 [node name="hud" parent="." instance=ExtResource( 1 )]
 player_path = NodePath("../Player")
+ZUMBIS_path = NodePath("../Node")
 
 [node name="DialogueBox" type="Sprite" parent="."]
 position = Vector2( 385, 166 )
@@ -33,23 +30,31 @@ texture = ExtResource( 5 )
 [node name="Gerador" type="Node2D" parent="."]
 position = Vector2( 72, 81 )
 script = ExtResource( 8 )
+player_path = NodePath("../hud")
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 271, 60 )
 
-[node name="zumbiTank" parent="." instance=ExtResource( 7 )]
-position = Vector2( -290, 276 )
-player_path = NodePath("../Player")
-
-[node name="zumbiExplosion" parent="." instance=ExtResource( 9 )]
-position = Vector2( 609, -31 )
-player_path = NodePath("../Player")
-
-[node name="zumbiFogo" parent="." instance=ExtResource( 10 )]
-position = Vector2( -214, -45 )
-player_path = NodePath("../Player")
-
 [node name="AnimatedSpriteMoeda" parent="." instance=ExtResource( 11 )]
 position = Vector2( 313, 122 )
-frame = 0
+frame = 1
 hud_path = NodePath("../hud")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="zumbiNormal2" parent="Node" instance=ExtResource( 6 )]
+position = Vector2( 174, 83 )
+
+[node name="zumbiFogo" parent="Node" instance=ExtResource( 10 )]
+position = Vector2( 773, 74 )
+
+[node name="zumbiTank" parent="Node" instance=ExtResource( 7 )]
+position = Vector2( 260, -49 )
+
+[node name="zumbiExplosion" parent="Node" instance=ExtResource( 9 )]
+position = Vector2( 437, 76 )
+
+[node name="zumbiNormal" parent="Node" instance=ExtResource( 6 )]
+position = Vector2( 328, 78 )
+
+[connection signal="tamo" from="hud" to="Gerador" method="tamo"]

@@ -21,13 +21,9 @@ var animExplo : AnimationPlayer
 
 
 
-export(NodePath) var player_path
-onready var player = get_node(player_path)
-
-
 
 func _ready() -> void:	
-	_player_ref = player
+	_player_ref = _player_ref
 	if textura_path:
 		textura = get_node(textura_path) as Sprite
 	if animExplosion_paht:

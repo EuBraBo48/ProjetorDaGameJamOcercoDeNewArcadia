@@ -18,12 +18,8 @@ var textura : Sprite
 var animTank : AnimationPlayer
 
 
-export(NodePath) var player_path
-onready var player = get_node(player_path)
-
-
 func _ready() -> void:
-	_player_ref = player
+	_player_ref = _player_ref
 	if textura_path:
 		textura = get_node(textura_path) as Sprite
 	if animTank_path:
@@ -65,11 +61,11 @@ func verivicaPS() -> void:
 
 
 func animent() -> void:
-	if distancia < 18 and time_since_last_attack >= attack_delay :
+	if distancia < 18 and time_since_last_attack >= attack_delay and _player_ref :
 		animTank.play("Atack")
 		if animTank.current_animation_position >= 0.5:
 			print("teste DAMo 2")
-			player.damo()
+			_player_ref.damo()
 			time_since_last_attack = 0.0  
 			# _player_ref.damo()
 			

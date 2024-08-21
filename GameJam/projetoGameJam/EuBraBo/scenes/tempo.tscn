@@ -71,11 +71,11 @@ anims/dia-noite = SubResource( 2 )
 anims/noite-dia = SubResource( 3 )
 
 [node name="dia" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 90.0
 autostart = true
 
 [node name="noite" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 90.0
 autostart = true
 
 [node name="hubDeDias" type="CanvasLayer" parent="."]
