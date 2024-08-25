@@ -30,15 +30,11 @@ func _ready() -> void:
 		animExplo = get_node(animExplosion_paht) as AnimationPlayer
 	
 
-
-
 func _on_deterquito_body_entered(_body):
 	if _body.is_in_group("Player"):
 		_player_ref = _body
 	
 	
-
-
 func _on_deterquito_body_exited(_body):
 	if _body.is_in_group("Player")  :
 		_player_ref = null
@@ -58,15 +54,14 @@ func _physics_process(_delta: float) -> void:
 		velocity = _direction
 	
 	
-
 func animent() -> void:	
 	if velocity != Vector2.ZERO:
 		animExplo.play("run")
-		
+		$PassosZumbi.play()
 		return
 	else:
 		animExplo.play("idle")
-	
+		$PassosZumbi.stop()
 
 func verivicaPS() -> void:
 	if velocity.x > 0:
@@ -76,12 +71,12 @@ func verivicaPS() -> void:
 		textura.flip_h = true	
 		
 
-
-
 func _on_atack_body_entered(_body):
 	if _body.is_in_group("Player") :
 		animExplo.play("explosion")
 		print("teste de animação de damo")
 		  # Reseta o tempo desde o último ataque
 		if animExplo.current_animation == "explosion":
+			$Explosivo.play()
 			queue_free()
+			

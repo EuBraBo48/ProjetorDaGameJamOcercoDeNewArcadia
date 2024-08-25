@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Energysword.ogg-766187d5b3fb68cdaad206dad6f76c5a.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Energysword.ogg"
+dest_files=[ "res://.import/Energysword.ogg-766187d5b3fb68cdaad206dad6f76c5a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

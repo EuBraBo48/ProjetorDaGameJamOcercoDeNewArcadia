@@ -1,60 +1,63 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://EuBraBo/scenes/hud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EuBraBo/scenes/pause_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EuBraBo/scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://EuBraBo/scenes/tempo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://EuBraBo/assets/HUD/DialogueHud/DialogueBox.png" type="Texture" id=5]
 [ext_resource path="res://EuBraBo/scenes/zumbiNormal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://EuBraBo/scenes/zumbiTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://EuBraBo/scrips/Gerador.gd" type="Script" id=8]
 [ext_resource path="res://EuBraBo/scenes/zumbiExplosion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://EuBraBo/scenes/zumbiFogo.tscn" type="PackedScene" id=10]
 [ext_resource path="res://EuBraBo/scenes/Moeda.tscn" type="PackedScene" id=11]
+[ext_resource path="res://EuBraBo/scenes/sounds.tscn" type="PackedScene" id=12]
+[ext_resource path="res://EuBraBo/scenes/terren.tscn" type="PackedScene" id=13]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
-[node name="pause_menu" parent="." instance=ExtResource( 2 )]
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="pause_menu" parent="HUD" instance=ExtResource( 2 )]
 visible = true
 
-[node name="hud" parent="." instance=ExtResource( 1 )]
-player_path = NodePath("../Player")
-ZUMBIS_path = NodePath("../Node")
+[node name="hud" parent="HUD" instance=ExtResource( 1 )]
+player_path = NodePath("../../Player")
+ZUMBIS_path = NodePath("../../geradosDeZumbis")
 
-[node name="DialogueBox" type="Sprite" parent="."]
-position = Vector2( 385, 166 )
-texture = ExtResource( 5 )
+[node name="tempo" parent="HUD" instance=ExtResource( 4 )]
 
-[node name="tempo" parent="." instance=ExtResource( 4 )]
+[node name="terreno" parent="." instance=ExtResource( 13 )]
 
 [node name="Gerador" type="Node2D" parent="."]
 position = Vector2( 72, 81 )
 script = ExtResource( 8 )
-player_path = NodePath("../hud")
+player_path = NodePath("../HUD/hud")
+
+[node name="sounds" parent="." instance=ExtResource( 12 )]
+
+[node name="geradosDeZumbis" type="Node" parent="."]
+
+[node name="zumbiNormal2" parent="geradosDeZumbis" instance=ExtResource( 6 )]
+position = Vector2( 130, 313 )
+
+[node name="zumbiFogo" parent="geradosDeZumbis" instance=ExtResource( 10 )]
+position = Vector2( 773, 74 )
+
+[node name="zumbiTank" parent="geradosDeZumbis" instance=ExtResource( 7 )]
+position = Vector2( 316, -130 )
+
+[node name="zumbiExplosion" parent="geradosDeZumbis" instance=ExtResource( 9 )]
+position = Vector2( 635, 87 )
+
+[node name="zumbiNormal" parent="geradosDeZumbis" instance=ExtResource( 6 )]
+position = Vector2( 485, 35 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 271, 60 )
+position = Vector2( 136, 43 )
 
 [node name="AnimatedSpriteMoeda" parent="." instance=ExtResource( 11 )]
 position = Vector2( 313, 122 )
-frame = 1
-hud_path = NodePath("../hud")
+frame = 3
+hud_path = NodePath("../HUD/hud")
 
-[node name="Node" type="Node" parent="."]
-
-[node name="zumbiNormal2" parent="Node" instance=ExtResource( 6 )]
-position = Vector2( 174, 83 )
-
-[node name="zumbiFogo" parent="Node" instance=ExtResource( 10 )]
-position = Vector2( 773, 74 )
-
-[node name="zumbiTank" parent="Node" instance=ExtResource( 7 )]
-position = Vector2( 260, -49 )
-
-[node name="zumbiExplosion" parent="Node" instance=ExtResource( 9 )]
-position = Vector2( 437, 76 )
-
-[node name="zumbiNormal" parent="Node" instance=ExtResource( 6 )]
-position = Vector2( 328, 78 )
-
-[connection signal="tamo" from="hud" to="Gerador" method="tamo"]
+[connection signal="tamo" from="HUD/hud" to="Gerador" method="tamo"]

@@ -271,10 +271,10 @@ tracks/3/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 7.625, 8.875 )
+extents = Vector2( 4, 3.5 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
-position = Vector2( 1, -1 )
+position = Vector2( 8, -2 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -286,7 +286,8 @@ stream = ExtResource( 6 )
 volume_db = -16.228
 
 [node name="Sprite_Player" type="Sprite" parent="."]
-scale = Vector2( 1.97802, 2.39063 )
+position = Vector2( -5.91208, -5 )
+scale = Vector2( 1.23901, 1.5 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 2
@@ -300,14 +301,17 @@ anims/roll = SubResource( 6 )
 anims/run = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -8, -2.5 )
 shape = SubResource( 4 )
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 current = true
+limit_left = 0
+limit_top = 0
+limit_right = 768
+limit_bottom = 384
+limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
-drag_margin_left = 0.16
-drag_margin_top = 0.21
-drag_margin_right = 0.13
-drag_margin_bottom = 0.22
 editor_draw_drag_margin = true

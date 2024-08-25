@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit zumbie 3.ogg-031de7b7a32a5d1810bfa4f82b784f4d.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/hit zumbie 3.ogg"
+dest_files=[ "res://.import/hit zumbie 3.ogg-031de7b7a32a5d1810bfa4f82b784f4d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

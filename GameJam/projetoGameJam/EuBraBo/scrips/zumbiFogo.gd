@@ -22,6 +22,7 @@ var animZumbiFogo: AnimationPlayer
 
 func _ready() -> void:
 	_player_ref = _player_ref
+	_player_ref == Player
 	if textura_path:
 		textura = get_node(textura_path) as Sprite
 	if animZumbiFogo_path:
@@ -61,9 +62,11 @@ func animent() -> void:
 		return
 	elif velocity != Vector2.ZERO:
 		animZumbiFogo.play("run")
+		$PassosZumbi.play()
 		return
 	else:
 		animZumbiFogo.play("idle")
+		$PassosZumbi.stop()
 
 
 func verivicaPS() -> void:

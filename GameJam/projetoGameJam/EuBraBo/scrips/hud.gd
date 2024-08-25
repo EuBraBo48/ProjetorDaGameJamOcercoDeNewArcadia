@@ -24,6 +24,7 @@ onready var zumbis = get_node(ZUMBIS_path)
 func _ready():
 	$tempo.text = str(tempo)
 
+
 # FUNÇÃO EM GERAL
 func _process(delta):
 	barras_geral()
@@ -39,6 +40,7 @@ func barras_geral() -> void:
 		stamina_bar.value = lerp(stamina_bar.value, player.stamina * 100 / player.max_stamina, 0.4)
 	player.stamina_bar()	
 
+
 # AQUI É A BARRA DE FOME 
 func re_fome() -> void:
 	if player.hunger >= 10:
@@ -53,14 +55,17 @@ func water_bar() -> void:
 		player.water -= 2
 		emit_signal("player_stats_changer", self)
 
+
 func moedas() -> void:
 	$AnimatedSpriteMoeda/LabelMoeda.text = str(NuMoedas)
+
 	
 func ondas() -> void:
 	$ondas.text = "Ondas número " + str(NuOndas)
 
+
 func _on_Timer_timeout():
-	tempo -= 5
+	tempo -= 1
 	print(tempo)
 	$tempo.text = str(tempo)
 	if tempo == 0:
@@ -76,3 +81,4 @@ func _on_Timer_timeout():
 		NuOndas += 1
 		tempo = 30
 		emit_signal("tamo")
+

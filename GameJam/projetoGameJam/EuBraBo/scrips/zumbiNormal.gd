@@ -61,10 +61,11 @@ func animent() -> void:
 		return
 	elif velocity != Vector2.ZERO:
 		animZumbiN.play("run")
+		$PassosZumbi.play()
 		return
 	else:
 		animZumbiN.play("ide")
-
+		$PassosZumbi.stop()
 
 func verivicaPS() -> void:
 	if velocity.x > 0:

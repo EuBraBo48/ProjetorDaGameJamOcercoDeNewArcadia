@@ -22,17 +22,21 @@ var stamina := 100.0
 var max_stamina := 100.0
 var stamina_recorvey := 1.0
 
+
 # Sinal para barra
 signal player_stats_changer
+
 
 # Variáveis de movimentação do player
 var playe: Vector2 = Vector2(0, 0)
 var velocity: Vector2 = Vector2(0, 0)
 export(int) var speed
 
+
 func _ready():
 	# Inicialização
 	pass
+
 
 func _process(delta):
 	mov_play()  # Movimentação do player
@@ -48,9 +52,11 @@ func _process(delta):
 		stamina = new_stamina
 		emit_signal("player_stats_changer")
 
+
 func _physics_process(_delta: float) -> void:
 	animete()  # Animação do player
 	verify_direction()  # Verifica a direção do player
+
 
 func mov_play() -> void:
 	if Input.is_action_pressed("mv_direito"):
@@ -68,6 +74,7 @@ func mov_play() -> void:
 	velocity = playe.normalized() * speed
 	move_and_slide(velocity)
 
+
 func animete() -> void:
 	if velocity != Vector2.ZERO:
 		animation.play("run")
@@ -76,11 +83,13 @@ func animete() -> void:
 		animation.play("Idle")
 		$PassosPlayer.stop()  # Para o som dos passos
 
+
 func verify_direction() -> void:
 	if velocity.x > 0:
 		sprite__player.flip_h = false
 	elif velocity.x < 0:
 		sprite__player.flip_h = true
+
 
 func damo() -> void:
 	if health > 0:
@@ -90,6 +99,7 @@ func damo() -> void:
 			print(health)
 			emit_signal("player_stats_changer", self)
 
+
 func stamina_bar() -> void:
 	if Input.is_action_just_pressed("mv_dash") and stamina > 2:
 		speed = 300
@@ -97,3 +107,4 @@ func stamina_bar() -> void:
 		animation.play("roll")
 	elif Input.is_action_just_released("mv_dash"):
 		speed = 60
+

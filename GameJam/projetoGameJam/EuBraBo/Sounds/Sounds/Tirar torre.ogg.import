@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tirar torre.ogg-94d104f8d365f674f965aeb3bf985664.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Tirar torre.ogg"
+dest_files=[ "res://.import/Tirar torre.ogg-94d104f8d365f674f965aeb3bf985664.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

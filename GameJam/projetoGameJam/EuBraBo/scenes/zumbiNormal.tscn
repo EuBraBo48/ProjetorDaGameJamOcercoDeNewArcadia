@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://EuBraBo/assets/inimigos/png-Sheet/zombie_norma-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://EuBraBo/scrips/zumbiNormal.gd" type="Script" id=2]
+[ext_resource path="res://EuBraBo/Sounds/Passos.ogg" type="AudioStream" id=3]
+[ext_resource path="res://EuBraBo/Sounds/Sounds/hit zumbie 1.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -116,19 +118,27 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 11.0
+radius = 7.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 113.991
+radius = 99.4585
 
 [node name="zumbiNormal" type="KinematicBody2D" groups=["inimigos1"]]
 script = ExtResource( 2 )
 textura_path = NodePath("textura")
 animZumbiN_path = NodePath("animZumbiN")
 
+[node name="PassosZumbi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -16.228
+
+[node name="AudioHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
 [node name="textura" type="Sprite" parent="."]
-scale = Vector2( 2.02381, 1.91667 )
+position = Vector2( -0.815455, -3.75002 )
+scale = Vector2( 1.52868, 1.47917 )
 texture = ExtResource( 1 )
 hframes = 25
 
@@ -142,13 +152,12 @@ anims/ide = SubResource( 1 )
 anims/run = SubResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-show_behind_parent = true
 shape = SubResource( 7 )
 
 [node name="deterquito" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="deterquito"]
-position = Vector2( -1, 1 )
+position = Vector2( 0, -2.38419e-07 )
 rotation = 0.261799
 shape = SubResource( 8 )
 

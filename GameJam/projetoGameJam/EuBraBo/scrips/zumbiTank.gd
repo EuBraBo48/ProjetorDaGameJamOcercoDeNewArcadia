@@ -73,8 +73,10 @@ func animent() -> void:
 		
 	elif velocity != Vector2.ZERO:
 		animTank.play("run")
+		$PassosZumbi.play()
 		return
 	
 	else:
 		animTank.play("ide")
+		$PassosZumbi.stop()
 	

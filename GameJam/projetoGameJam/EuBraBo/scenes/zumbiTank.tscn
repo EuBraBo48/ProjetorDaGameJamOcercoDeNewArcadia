@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://EuBraBo/assets/inimigos/png-Sheet/tank_zombie-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://EuBraBo/scrips/zumbiTank.gd" type="Script" id=2]
+[ext_resource path="res://EuBraBo/Sounds/Passos.ogg" type="AudioStream" id=3]
+[ext_resource path="res://EuBraBo/Sounds/Sounds/hit zumbie 1.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=5]
 resource_name = "Atack"
@@ -107,16 +109,23 @@ radius = 9.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 171.237
+radius = 409.518
 
 [node name="zumbiTank" type="KinematicBody2D" groups=["inimigos2"]]
 script = ExtResource( 2 )
 textura_path = NodePath("textura")
 animTank_path = NodePath("AnimTank")
 
+[node name="PassosZumbi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -16.228
+
+[node name="AudioHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
 [node name="textura" type="Sprite" parent="."]
-position = Vector2( 7, 0 )
-scale = Vector2( 1.58333, 1.68269 )
+position = Vector2( 3.83336, -1.43749 )
+scale = Vector2( 1.38541, 1.57211 )
 texture = ExtResource( 1 )
 hframes = 27
 frame = 13
