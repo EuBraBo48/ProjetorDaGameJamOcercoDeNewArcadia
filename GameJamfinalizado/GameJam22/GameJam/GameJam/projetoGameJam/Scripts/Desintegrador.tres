@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/FireWeapon.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/Desintegrador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://luan/imagens/Desintegrador_molecular.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Desintegrador Molecular"
+maxQuantity = 1
+description = "Conheço apenas um amigo que teve coragem de usar isso... Ele nunca mais voltou"
+value = 45
+icon = ExtResource( 3 )
+scene = ExtResource( 2 )
+maxDistance = 45
+damage = 10000
+cooldown = 0.5
+cooldownRemaining = 0.0

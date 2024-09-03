@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Passos.ogg-0122ef64046140d26959debbffe5ec58.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Passos.ogg"
+dest_files=[ "res://.import/Passos.ogg-0122ef64046140d26959debbffe5ec58.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

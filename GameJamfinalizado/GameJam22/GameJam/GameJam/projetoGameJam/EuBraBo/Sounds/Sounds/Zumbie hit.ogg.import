@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Zumbie hit.ogg-2c322d5123606d56e835ea239437e3ca.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Zumbie hit.ogg"
+dest_files=[ "res://.import/Zumbie hit.ogg-2c322d5123606d56e835ea239437e3ca.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

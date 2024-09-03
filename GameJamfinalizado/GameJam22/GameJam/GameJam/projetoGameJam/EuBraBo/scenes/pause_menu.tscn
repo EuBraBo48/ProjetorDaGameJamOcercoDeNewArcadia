@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EuBraBo/assets/pause_menu_tema.tres" type="Theme" id=1]
+[ext_resource path="res://EuBraBo/scrips/pause_menu.gd" type="Script" id=2]
+
+[node name="pause_menu" type="CanvasLayer"]
+pause_mode = 2
+visible = false
+script = ExtResource( 2 )
+
+[node name="bg_overlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0.254902, 0.054902 )
+
+[node name="menu_holder" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -22.0
+margin_bottom = 22.0
+
+[node name="resume_btn" type="Button" parent="menu_holder"]
+margin_right = 384.0
+margin_bottom = 16.0
+theme = ExtResource( 1 )
+text = "RESUME"
+
+[node name="quit_btn" type="Button" parent="menu_holder"]
+margin_top = 20.0
+margin_right = 384.0
+margin_bottom = 36.0
+theme = ExtResource( 1 )
+text = "QUIT GAME"
+
+[connection signal="pressed" from="menu_holder/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="menu_holder/quit_btn" to="." method="_on_quit_btn_pressed"]

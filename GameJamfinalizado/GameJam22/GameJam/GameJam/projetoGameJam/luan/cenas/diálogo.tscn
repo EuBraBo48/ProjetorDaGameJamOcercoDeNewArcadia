@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://luan/códigos/diálogo.gd" type="Script" id=1]
+[ext_resource path="res://luan/imagens/WhatsApp Image 2024-08-24 at 08.24.27-1.png.png" type="Texture" id=2]
+[ext_resource path="res://luan/imagens/Minecraft.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://EuBraBo/Sounds/Musicas/Florest.v1.ogg" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://EuBraBo/assets/Minecraft.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 189, 195 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 1 )
+texture_scale = Vector2( 0.746, 1 )
+polygon = PoolVector2Array( -190, -195, 834, -196, 834, 404, -189, 405 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = -182.0
+margin_top = -130.0
+margin_right = 186.0
+margin_bottom = -11.0
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 32.0
+margin_top = 55.0
+margin_right = 327.0
+margin_bottom = 102.0
+custom_fonts/normal_font = SubResource( 3 )
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+margin_left = -6.0
+margin_top = 10.0
+margin_right = 91.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 1 )
+text = "RADIO"
+align = 1
+valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true

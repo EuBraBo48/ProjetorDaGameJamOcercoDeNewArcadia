@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://EuBraBo/scrips/Gerador.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/CatchArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/ItemController.gd" type="Script" id=3]
+[ext_resource path="res://Cenas/HudController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EuBraBo/scenes/pause_menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://EuBraBo/scenes/terren.tscn" type="PackedScene" id=6]
+[ext_resource path="res://EuBraBo/scenes/sounds.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/PistolaPlasma.tres" type="Resource" id=9]
+[ext_resource path="res://EuBraBo/scenes/hud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://EuBraBo/scenes/tempo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://EuBraBo/scenes/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cenas/AbstractItem.tscn" type="PackedScene" id=13]
+[ext_resource path="res://EuBraBo/scenes/zumbiNormal.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 392, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 210.5 )
+
+[node name="Main" type="Node2D"]
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="pause_menu" parent="HUD" instance=ExtResource( 5 )]
+visible = true
+
+[node name="hud" parent="HUD" instance=ExtResource( 10 )]
+player_path = NodePath("../../Player")
+ZUMBIS_path = NodePath("../../geradosDeZumbis")
+
+[node name="HudController" parent="HUD" instance=ExtResource( 4 )]
+hudBraboPath = NodePath("../hud")
+itemControllerPath = NodePath("../../Player/ItemController")
+playerPath = NodePath("../../Player")
+
+[node name="tempo" parent="HUD" instance=ExtResource( 11 )]
+
+[node name="terreno" parent="." instance=ExtResource( 6 )]
+z_index = -1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="terreno"]
+collision_layer = 2
+
+[node name="Collision" type="CollisionShape2D" parent="terreno/StaticBody2D"]
+position = Vector2( 388, -10 )
+shape = SubResource( 1 )
+
+[node name="Collision3" type="CollisionShape2D" parent="terreno/StaticBody2D"]
+position = Vector2( -6, 184.5 )
+shape = SubResource( 2 )
+
+[node name="Collision4" type="CollisionShape2D" parent="terreno/StaticBody2D"]
+position = Vector2( 384, 391 )
+shape = SubResource( 1 )
+
+[node name="Collision5" type="CollisionShape2D" parent="terreno/StaticBody2D"]
+position = Vector2( 778, 193 )
+shape = SubResource( 2 )
+
+[node name="Gerador" type="Node2D" parent="."]
+position = Vector2( 72, 81 )
+script = ExtResource( 1 )
+player_path = NodePath("../HUD/hud")
+
+[node name="Timer" type="Timer" parent="Gerador"]
+wait_time = 5.0
+
+[node name="sounds" parent="." instance=ExtResource( 7 )]
+
+[node name="geradosDeZumbis" type="Node" parent="."]
+
+[node name="zumbiNormal" parent="geradosDeZumbis" instance=ExtResource( 14 )]
+position = Vector2( 318, 88 )
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 12 )]
+position = Vector2( 136, 43 )
+collision_layer = 3
+collision_mask = 1
+
+[node name="CatchArea" parent="Player" instance=ExtResource( 2 )]
+
+[node name="ItemController" type="Node2D" parent="Player"]
+script = ExtResource( 3 )
+
+[node name="AbstractItem2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 229, 132 )
+rotation = -0.00101806
+item = ExtResource( 9 )
+
+[connection signal="tamo" from="HUD/hud" to="Gerador" method="tamo"]
+[connection signal="timeout" from="Gerador/Timer" to="Gerador" method="_on_Timer_timeout"]

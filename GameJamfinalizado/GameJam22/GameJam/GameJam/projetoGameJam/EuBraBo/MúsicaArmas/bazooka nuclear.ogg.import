@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bazooka nuclear.ogg-15a98ab9d4a4470881bbf7e697175a92.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/MúsicaArmas/bazooka nuclear.ogg"
+dest_files=[ "res://.import/bazooka nuclear.ogg-15a98ab9d4a4470881bbf7e697175a92.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

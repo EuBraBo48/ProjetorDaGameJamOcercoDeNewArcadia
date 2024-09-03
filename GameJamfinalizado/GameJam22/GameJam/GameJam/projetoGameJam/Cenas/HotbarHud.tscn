@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Cenas/HotbarSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/SelectSlot.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/HotbarHud.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Selecting",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Selected"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.8 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ), Vector2( 1.5, 1.5 ), Vector2( 0.8, 0.8 ), Vector2( 1.3, 1.3 ) ]
+}
+
+[node name="HotbarHud" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="HotbarHud" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SlotContainer" type="GridContainer" parent="HotbarHud"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -25.0
+margin_right = 53.0
+margin_bottom = -9.0
+rect_scale = Vector2( 1.3, 1.3 )
+rect_pivot_offset = Vector2( 53, 0 )
+custom_constants/vseparation = 0
+custom_constants/hseparation = 2
+columns = 8
+
+[node name="HotbarSlot" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+
+[node name="HotbarSlot2" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+margin_left = 18.0
+margin_right = 34.0
+
+[node name="HotbarSlot3" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+margin_left = 36.0
+margin_right = 52.0
+
+[node name="HotbarSlot4" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+margin_left = 54.0
+margin_right = 70.0
+
+[node name="HotbarSlot5" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+margin_left = 72.0
+margin_right = 88.0
+
+[node name="HotbarSlot6" parent="HotbarHud/SlotContainer" instance=ExtResource( 1 )]
+margin_left = 90.0
+margin_right = 106.0
+
+[node name="SelectSlotSprite" type="AnimatedSprite" parent="HotbarHud"]
+position = Vector2( 134, 177 )
+scale = Vector2( 1.3, 1.3 )
+frames = SubResource( 4 )
+animation = "Selecting"
+playing = true
+
+[node name="Animations" type="AnimationPlayer" parent="HotbarHud/SelectSlotSprite"]
+autoplay = "Selected"
+anims/RESET = SubResource( 5 )
+anims/Selected = SubResource( 6 )

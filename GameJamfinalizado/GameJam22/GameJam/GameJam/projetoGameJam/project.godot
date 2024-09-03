@@ -1,0 +1,318 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "AbstractItem",
+"language": "GDScript",
+"path": "res://Scripts/AbstractItem.gd"
+}, {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Scripts/BulletBase.gd"
+}, {
+"base": "Area2D",
+"class": "CatchArea",
+"language": "GDScript",
+"path": "res://Scripts/CatchArea.gd"
+}, {
+"base": "ItemBase",
+"class": "ConsumableBase",
+"language": "GDScript",
+"path": "res://Scripts/ConsumableBase.gd"
+}, {
+"base": "Item",
+"class": "ConsumableItem",
+"language": "GDScript",
+"path": "res://Scripts/ConsumableItem.gd"
+}, {
+"base": "Item",
+"class": "FireWeapon",
+"language": "GDScript",
+"path": "res://Scripts/FireWeapon.gd"
+}, {
+"base": "ItemBase",
+"class": "FireWeaponBase",
+"language": "GDScript",
+"path": "res://Scripts/FireWeaponBase.gd"
+}, {
+"base": "Node",
+"class": "Hotbar",
+"language": "GDScript",
+"path": "res://Scripts/Hotbar.gd"
+}, {
+"base": "HudBase",
+"class": "HotbarHud",
+"language": "GDScript",
+"path": "res://Scripts/HotbarHud.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Hud",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/hud.gd"
+}, {
+"base": "CanvasLayer",
+"class": "HudBase",
+"language": "GDScript",
+"path": "res://Scripts/HudBase.gd"
+}, {
+"base": "CanvasLayer",
+"class": "HudController",
+"language": "GDScript",
+"path": "res://Scripts/HudController.gd"
+}, {
+"base": "Node",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scripts/Inventory.gd"
+}, {
+"base": "HudBase",
+"class": "InventoryHud",
+"language": "GDScript",
+"path": "res://Scripts/InventoryHud.gd"
+}, {
+"base": "TextureRect",
+"class": "InventorySlotHud",
+"language": "GDScript",
+"path": "res://Scripts/InventorySlot.gd"
+}, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scripts/Item.gd"
+}, {
+"base": "Node2D",
+"class": "ItemBase",
+"language": "GDScript",
+"path": "res://Scripts/ItemBase.gd"
+}, {
+"base": "Node2D",
+"class": "ItemController",
+"language": "GDScript",
+"path": "res://Scripts/ItemController.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Moeda",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Moeda.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Player.gd"
+}, {
+"base": "HudBase",
+"class": "ShopHud",
+"language": "GDScript",
+"path": "res://Scripts/ShopHud.gd"
+}, {
+"base": "Control",
+"class": "TelaDeTitulo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/telaDeTilulo.gd"
+}, {
+"base": "Node2D",
+"class": "Tempo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/tempo.gd"
+}, {
+"base": "Label",
+"class": "TimerManager",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/hosdas.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ZumbiFogo",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiFogo.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ZumbiNormal",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiNormal.gd"
+}, {
+"base": "TextureRect",
+"class": "a",
+"language": "GDScript",
+"path": "res://Scripts/HotbarSlot.gd"
+}, {
+"base": "Node2D",
+"class": "gerado",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/Gerador.gd"
+}, {
+"base": "CanvasLayer",
+"class": "pause_manu",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/pause_menu.gd"
+}, {
+"base": "Node2D",
+"class": "sounds",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/sounds.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "zumbiExplosion",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiExplosion.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "zumbiTank",
+"language": "GDScript",
+"path": "res://EuBraBo/scrips/zumbiTank.gd"
+} ]
+_global_script_class_icons={
+"AbstractItem": "",
+"Bullet": "",
+"CatchArea": "",
+"ConsumableBase": "",
+"ConsumableItem": "",
+"FireWeapon": "",
+"FireWeaponBase": "",
+"Hotbar": "",
+"HotbarHud": "",
+"Hud": "",
+"HudBase": "",
+"HudController": "",
+"Inventory": "",
+"InventoryHud": "",
+"InventorySlotHud": "",
+"Item": "",
+"ItemBase": "",
+"ItemController": "",
+"Moeda": "",
+"Player": "",
+"ShopHud": "",
+"TelaDeTitulo": "",
+"Tempo": "",
+"TimerManager": "",
+"ZumbiFogo": "",
+"ZumbiNormal": "",
+"a": "",
+"gerado": "",
+"pause_manu": "",
+"sounds": "",
+"zumbiExplosion": "",
+"zumbiTank": ""
+}
+
+[application]
+
+config/name="jogoSemNoneGameJam"
+run/main_scene="res://EuBraBo/scenes/telaDeTilulo.tscn"
+config/icon="res://EuBraBo/coisasEmGeral/icon.png"
+
+[audio]
+
+default_bus_layout="res://EuBraBo/coisasEmGeral/default_bus_layout.tres"
+
+[display]
+
+window/size/width=384
+window/size/height=192
+window/size/test_width=1152
+window/size/test_height=576
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[global]
+
+fon=false
+font=false
+fonte=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_page_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+mv_baixo={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mv_cima={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mv_esquerda={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mv_direito={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mv_dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+DROP={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+INVENTORY={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":84,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[mono]
+
+project/assembly_name="jogoSemNoneGameJam"
+
+[physics]
+
+common/enable_pause_aware_picking=true

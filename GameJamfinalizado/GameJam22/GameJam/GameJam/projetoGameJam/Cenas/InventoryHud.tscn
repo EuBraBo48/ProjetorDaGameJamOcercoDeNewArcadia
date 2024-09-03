@@ -1,0 +1,273 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Cenas/InventorySlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/SelectInventorySlot.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/InventoryHud.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/MouseController.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=10]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, -2, -2, -0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 1, -0.3 ), Vector2( 1, 0.2 ), Vector2( 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 2, -2, -2, -0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 1, 1.3 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0.152941, 0.784314 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "Selecting",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Selected"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.8 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 6.32456
+
+[node name="InventoryHud" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+anims/Close = SubResource( 10 )
+anims/Open = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 160, 90 )
+
+[node name="Panel" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 160, 90 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="InventoryContainer" type="GridContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -106.0
+margin_top = -34.0
+margin_right = 106.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 106, 34 )
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 6
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="InventorySlot" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_right = 32.0
+
+[node name="InventorySlot2" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 36.0
+margin_right = 68.0
+
+[node name="InventorySlot3" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 72.0
+margin_right = 104.0
+
+[node name="InventorySlot4" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 108.0
+margin_right = 140.0
+
+[node name="InventorySlot5" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 144.0
+margin_right = 176.0
+
+[node name="InventorySlot6" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 180.0
+margin_right = 212.0
+
+[node name="InventorySlot7" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+
+[node name="InventorySlot8" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 68.0
+margin_bottom = 68.0
+
+[node name="InventorySlot9" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 72.0
+margin_top = 36.0
+margin_right = 104.0
+margin_bottom = 68.0
+
+[node name="InventorySlot10" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 108.0
+margin_top = 36.0
+margin_right = 140.0
+margin_bottom = 68.0
+
+[node name="InventorySlot11" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 144.0
+margin_top = 36.0
+margin_right = 176.0
+margin_bottom = 68.0
+
+[node name="InventorySlot12" parent="Control/InventoryContainer" instance=ExtResource( 1 )]
+margin_left = 180.0
+margin_top = 36.0
+margin_right = 212.0
+margin_bottom = 68.0
+
+[node name="SelectSlotSprite" type="AnimatedSprite" parent="Control"]
+position = Vector2( 70, 72 )
+scale = Vector2( 1.3, 1.3 )
+frames = SubResource( 4 )
+animation = "Selecting"
+frame = 1
+playing = true
+
+[node name="Animations" type="AnimationPlayer" parent="Control/SelectSlotSprite"]
+autoplay = "Selected"
+anims/RESET = SubResource( 5 )
+anims/Selected = SubResource( 6 )
+
+[node name="MouseController" type="Area2D" parent="Control"]
+script = ExtResource( 4 )
+
+[node name="Collision" type="CollisionShape2D" parent="Control/MouseController"]
+shape = SubResource( 7 )
+
+[node name="ItemIcon" type="Sprite" parent="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0.780392 )

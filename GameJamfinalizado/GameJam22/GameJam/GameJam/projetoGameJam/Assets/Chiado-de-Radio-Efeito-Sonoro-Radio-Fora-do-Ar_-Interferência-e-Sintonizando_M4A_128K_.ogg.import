@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Chiado-de-Radio-Efeito-Sonoro-Radio-Fora-do-Ar_-Interferência-e-Sintonizando_M4A_128K_.ogg-da67d4b0af89011d5f22b2e96d8f2123.oggstr"
+
+[deps]
+
+source_file="res://Assets/Chiado-de-Radio-Efeito-Sonoro-Radio-Fora-do-Ar_-Interferência-e-Sintonizando_M4A_128K_.ogg"
+dest_files=[ "res://.import/Chiado-de-Radio-Efeito-Sonoro-Radio-Fora-do-Ar_-Interferência-e-Sintonizando_M4A_128K_.ogg-da67d4b0af89011d5f22b2e96d8f2123.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

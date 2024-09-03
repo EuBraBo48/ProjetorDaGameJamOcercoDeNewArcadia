@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://EuBraBo/assets/Minecraft.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://EuBraBo/scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EuBraBo/scrips/creditos.gd" type="Script" id=3]
+
+[sub_resource type="Theme" id=1]
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 197.5, 11 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 120 )
+
+[node name="creditos" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -132, -13 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.858824, 0.858824, 0.858824, 1 )
+
+[node name="titulo" type="Label" parent="."]
+margin_left = 135.0
+margin_top = 1.0
+margin_right = 197.0
+margin_bottom = 17.0
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "creditos"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.827451, 0.8, 0.8, 1 )
+
+[node name="informação" type="Label" parent="."]
+margin_left = 53.0
+margin_top = 23.0
+margin_right = 301.0
+margin_bottom = 134.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "EuBraBo: progamador e diretor
+geloze: artista e progamador
+luan: progamador
+Rafa: game designer
+wofs : artista
+cabrinha : sonoplasta e artista  "
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 30, 40 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 307.0
+margin_top = 164.0
+margin_right = 361.0
+margin_bottom = 184.0
+text = "VOLTA"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 200, -10 )
+shape = SubResource( 4 )
+
+[node name="Collision3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -6, 94 )
+shape = SubResource( 5 )
+
+[node name="Collision4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 189.5, 201 )
+shape = SubResource( 4 )
+
+[node name="Collision5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 392, 90 )
+shape = SubResource( 5 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

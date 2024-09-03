@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Cenas/FireWeaponBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ExportedLayers/LaserDePlasma.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Armalazer.gd" type="Script" id=4]
+[ext_resource path="res://Assets/ExportedLayers/4 (2).png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 220.208, 3.33333 )
+
+[node name="Armalazer" instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+
+[node name="LazerArea" type="Area2D" parent="." index="0"]
+visible = false
+position = Vector2( 18.3333, 0 )
+
+[node name="Collision" type="CollisionShape2D" parent="LazerArea" index="0"]
+position = Vector2( 201.042, 0 )
+shape = SubResource( 1 )
+
+[node name="LazerSprite" type="Sprite" parent="LazerArea" index="1"]
+position = Vector2( -175.833, -4.76837e-07 )
+scale = Vector2( 40, 1 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="CooldownTimer" parent="." index="2"]
+wait_time = 0.01
+one_shot = false
+autostart = true
+
+[node name="BulletPos" parent="." index="4"]
+position = Vector2( 18.3333, 0 )
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeou"]

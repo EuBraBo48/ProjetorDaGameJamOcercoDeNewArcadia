@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Desintegrador molecular.ogg-d74ff03cdc714398a1efbc0b61387d72.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/MúsicaArmas/Desintegrador molecular.ogg"
+dest_files=[ "res://.import/Desintegrador molecular.ogg-d74ff03cdc714398a1efbc0b61387d72.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

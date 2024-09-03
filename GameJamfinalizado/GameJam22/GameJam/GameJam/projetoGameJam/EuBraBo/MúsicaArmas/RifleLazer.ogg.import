@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/RifleLazer.ogg-adf70b23a372ecd8b158abbe15201fdb.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/MúsicaArmas/RifleLazer.ogg"
+dest_files=[ "res://.import/RifleLazer.ogg-adf70b23a372ecd8b158abbe15201fdb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

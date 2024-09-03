@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Recarregar.ogg-084929ad532c2b5f5707d05f714d1efd.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Recarregar.ogg"
+dest_files=[ "res://.import/Recarregar.ogg-084929ad532c2b5f5707d05f714d1efd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

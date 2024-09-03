@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Rifle de gelo.ogg-7debf576b3ac3bd787f2c5b7fd99ded8.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Rifle de gelo.ogg"
+dest_files=[ "res://.import/Rifle de gelo.ogg-7debf576b3ac3bd787f2c5b7fd99ded8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

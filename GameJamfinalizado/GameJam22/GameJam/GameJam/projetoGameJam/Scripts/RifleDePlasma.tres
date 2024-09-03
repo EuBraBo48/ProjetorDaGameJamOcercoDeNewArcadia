@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/FireWeapon.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/RifleDePlasma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/ExportedLayers/RifleDePlasma.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Rifle De Plasma"
+maxQuantity = 1
+description = "Um rifle, de plasma, parece que minha criatividade acabou..."
+value = 25
+icon = ExtResource( 3 )
+scene = ExtResource( 2 )
+maxDistance = 35
+damage = 60
+cooldown = 2.0
+cooldownRemaining = 0.0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/PistolaDePlasma.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/BulletBase.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "DEFAULT",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.0
+
+[node name="BulletBase" type="Area2D"]
+scale = Vector2( 1.2, 1.2 )
+script = ExtResource( 2 )
+
+[node name="Icon" type="AnimatedSprite" parent="."]
+position = Vector2( 0.5, -0.5 )
+frames = SubResource( 3 )
+animation = "DEFAULT"
+playing = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_BulletBase_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

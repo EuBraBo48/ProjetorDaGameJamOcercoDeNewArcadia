@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tiro lança chamas.ogg-8fd8627a98607220b89ca5aecd4b2b67.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/Tiro lança chamas.ogg"
+dest_files=[ "res://.import/Tiro lança chamas.ogg-8fd8627a98607220b89ca5aecd4b2b67.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

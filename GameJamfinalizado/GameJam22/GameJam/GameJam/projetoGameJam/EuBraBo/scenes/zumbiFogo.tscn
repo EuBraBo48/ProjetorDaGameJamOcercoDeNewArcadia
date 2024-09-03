@@ -1,0 +1,194 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://EuBraBo/assets/inimigos/png-Sheet/piro_zumbie-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://EuBraBo/scrips/zumbiFogo.gd" type="Script" id=2]
+[ext_resource path="res://EuBraBo/Sounds/Passos.ogg" type="AudioStream" id=3]
+[ext_resource path="res://EuBraBo/Sounds/Sounds/hit zumbie 1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/hit_flash.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/active = false
+
+[sub_resource type="Animation" id=5]
+resource_name = "Die"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25, 26, 27, 28, 29 ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "atack"
+length = 0.68
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 20, 21 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "damage"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 2.73208 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 7.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 656.555
+
+[sub_resource type="Animation" id=9]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("textura:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="zumbiFogo" type="KinematicBody2D"]
+script = ExtResource( 2 )
+textura_path = NodePath("textura")
+animZumbiFogo_path = NodePath("AnimFogo")
+
+[node name="PassosZumbi" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -16.228
+
+[node name="AudioHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="textura" type="Sprite" parent="."]
+material = SubResource( 11 )
+position = Vector2( -1, 0 )
+scale = Vector2( 1.43182, 1.58333 )
+texture = ExtResource( 1 )
+hframes = 30
+
+[node name="AnimFogo" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/Die = SubResource( 5 )
+anims/RESET = SubResource( 1 )
+anims/atack = SubResource( 6 )
+anims/damage = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, 4 )
+shape = SubResource( 7 )
+
+[node name="detequito" type="Area2D" parent="."]
+position = Vector2( 24, -7 )
+
+[node name="aria" type="CollisionShape2D" parent="detequito"]
+position = Vector2( -3, 11 )
+shape = SubResource( 8 )
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[connection signal="body_entered" from="detequito" to="." method="_on_detequito_body_entered"]
+[connection signal="body_exited" from="detequito" to="." method="_on_detequito_body_exited"]

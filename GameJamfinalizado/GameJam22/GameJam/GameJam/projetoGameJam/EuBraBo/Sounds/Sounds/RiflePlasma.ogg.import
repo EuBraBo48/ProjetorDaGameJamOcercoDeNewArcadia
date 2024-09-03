@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/RiflePlasma.ogg-32bcb58cc70b6d1d7c86c6c32a40c211.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Sounds/RiflePlasma.ogg"
+dest_files=[ "res://.import/RiflePlasma.ogg-32bcb58cc70b6d1d7c86c6c32a40c211.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

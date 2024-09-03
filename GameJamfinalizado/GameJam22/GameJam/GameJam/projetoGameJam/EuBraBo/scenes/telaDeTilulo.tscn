@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://EuBraBo/assets/pause_menu_tema.tres" type="Theme" id=1]
+[ext_resource path="res://EuBraBo/scrips/telaDeTilulo.gd" type="Script" id=2]
+[ext_resource path="res://EuBraBo/assets/Player/PlayerIddle.png" type="Texture" id=3]
+[ext_resource path="res://EuBraBo/scenes/terren.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EuBraBo/Sounds/Musicas/ANMT-Musica 4.ogg" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.5
+} ]
+
+[node name="telaDeTilulo" type="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -192.0
+margin_right = 192.0
+script = ExtResource( 2 )
+
+[node name="CanvasDaTelaTitulo" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="terren" parent="CanvasDaTelaTitulo" instance=ExtResource( 4 )]
+position = Vector2( -357, -79 )
+
+[node name="menu" type="VBoxContainer" parent="CanvasDaTelaTitulo"]
+anchor_bottom = 1.0
+margin_top = 25.0
+margin_right = 201.0
+margin_bottom = -105.0
+
+[node name="newGame" type="Button" parent="CanvasDaTelaTitulo/menu"]
+margin_right = 201.0
+margin_bottom = 16.0
+theme = ExtResource( 1 )
+text = "New Game"
+
+[node name="options" type="Button" parent="CanvasDaTelaTitulo/menu"]
+margin_top = 20.0
+margin_right = 201.0
+margin_bottom = 36.0
+theme = ExtResource( 1 )
+text = "Options"
+
+[node name="credits" type="Button" parent="CanvasDaTelaTitulo/menu"]
+margin_top = 40.0
+margin_right = 201.0
+margin_bottom = 56.0
+theme = ExtResource( 1 )
+text = "Credits"
+
+[node name="quit" type="Button" parent="CanvasDaTelaTitulo/menu"]
+margin_top = 60.0
+margin_right = 201.0
+margin_bottom = 76.0
+theme = ExtResource( 1 )
+text = "Quit"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasDaTelaTitulo"]
+position = Vector2( 305, 102 )
+scale = Vector2( 9.20313, 9.95313 )
+frames = SubResource( 4 )
+playing = true
+flip_h = true
+
+[node name="options" type="TabContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -96.0
+margin_right = 192.0
+margin_bottom = 96.0
+
+[node name="audio" type="Tabs" parent="options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBox" type="VBoxContainer" parent="options/audio"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="video" type="Tabs" parent="options"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="vbox" type="VBoxContainer" parent="options/video"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -188.0
+margin_top = -78.0
+margin_right = 188.0
+margin_bottom = 78.0
+alignment = 1
+
+[node name="fullscreen" type="CheckBox" parent="options/video/vbox"]
+margin_top = 50.0
+margin_right = 376.0
+margin_bottom = 66.0
+theme = ExtResource( 1 )
+text = "Fullscreen"
+
+[node name="Borderless" type="CheckBox" parent="options/video/vbox"]
+margin_top = 70.0
+margin_right = 376.0
+margin_bottom = 86.0
+theme = ExtResource( 1 )
+text = "Borderless"
+
+[node name="Vsync" type="OptionButton" parent="options/video/vbox"]
+margin_top = 90.0
+margin_right = 376.0
+margin_bottom = 106.0
+theme = ExtResource( 1 )
+text = "Vsync"
+
+[node name="VOLTA" type="Button" parent="options"]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+text = "VOLTA"
+
+[node name="musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "musica"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 386.0
+margin_bottom = 199.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="CanvasDaTelaTitulo/menu/newGame" to="." method="_on_newGame_pressed"]
+[connection signal="pressed" from="CanvasDaTelaTitulo/menu/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasDaTelaTitulo/menu/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasDaTelaTitulo/menu/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="options/video/vbox/fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="options/video/vbox/Borderless" to="." method="_on_Borderless_pressed"]
+[connection signal="pressed" from="options/VOLTA" to="." method="_on_VOLTA_pressed"]

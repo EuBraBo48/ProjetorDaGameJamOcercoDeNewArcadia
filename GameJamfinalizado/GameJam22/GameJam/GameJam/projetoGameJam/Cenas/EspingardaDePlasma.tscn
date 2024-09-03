@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cenas/EspingardaBullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenas/FireWeaponBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://luan/imagens/Campo_de_forca.png" type="Texture" id=3]
+[ext_resource path="res://EuBraBo/MúsicaArmas/Rifle de gelo.ogg" type="AudioStream" id=4]
+
+[node name="EspingardaDePlasma" instance=ExtResource( 2 )]
+rotation = -0.00154524
+bullet = ExtResource( 1 )
+espin = true
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="BulletPos" parent="." index="3"]
+position = Vector2( 20, 0 )
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 4 )

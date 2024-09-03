@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/ConsumableItem.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ExportedLayers/Poção Vermelha.png" type="Texture" id=2]
+[ext_resource path="res://Cenas/Consumable.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Poção Vermelha Misteriosa"
+maxQuantity = 1
+description = "Uma bebida alcólica chamada cor- Digo, uma poçao que curará seus ferimentos!"
+value = 15
+icon = ExtResource( 2 )
+scene = ExtResource( 3 )
+maxDistance = 20
+health = 50
+stamina = 0
+water = 50
+hunger = 0
+maxHealth = 10

@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/PistolaPlasma.tres" type="Resource" id=2]
+[ext_resource path="res://Cenas/AbstractItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/HudController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cenas/CatchArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/ItemController.gd" type="Script" id=6]
+[ext_resource path="res://Player.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="AbstractItem" parent="." instance=ExtResource( 3 )]
+position = Vector2( 135, 60 )
+collision_mask = 1
+item = ExtResource( 2 )
+
+[node name="HudController" parent="." instance=ExtResource( 4 )]
+itemControllerPath = NodePath("../Player/ItemController")
+playerPath = NodePath("../Player")
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 180, 124 )
+script = ExtResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 3 )
+
+[node name="Icon" type="Sprite" parent="Player"]
+texture = ExtResource( 8 )
+
+[node name="CatchArea" parent="Player" instance=ExtResource( 5 )]
+
+[node name="ItemController" type="Node2D" parent="Player"]
+script = ExtResource( 6 )

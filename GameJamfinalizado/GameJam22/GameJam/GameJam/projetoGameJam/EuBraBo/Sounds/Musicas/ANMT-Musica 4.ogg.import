@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ANMT-Musica 4.ogg-50b936b329d47b57063a790ad2b633cd.oggstr"
+
+[deps]
+
+source_file="res://EuBraBo/Sounds/Musicas/ANMT-Musica 4.ogg"
+dest_files=[ "res://.import/ANMT-Musica 4.ogg-50b936b329d47b57063a790ad2b633cd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
