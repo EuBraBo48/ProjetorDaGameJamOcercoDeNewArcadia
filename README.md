@@ -11,3 +11,5 @@
 
 * [YouTube Do EuBraBo48](https://www.youtube.com/@Eu_bra_bo48)
 * [YouTube Da Universal Ng](https://www.youtube.com/@UniversalNg) 
+
+![Salford_Studio_1](https://github.com/user-attachments/assets/6be87cdc-d1f9-47d9-b0e0-7079550aaef1)
