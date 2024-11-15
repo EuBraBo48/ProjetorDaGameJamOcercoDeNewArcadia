@@ -24,3 +24,4 @@ animations = [ {
 [node name="Icon" parent="." index="0"]
 frames = SubResource( 3 )
 animation = "adad"
+frame = 1

@@ -13,7 +13,7 @@ var tempo = 20.0
 signal tamo 
 
 
-export (NodePath) var player_path
+export (NodePath) var player_path 
 onready var player = get_node(player_path)
 
 

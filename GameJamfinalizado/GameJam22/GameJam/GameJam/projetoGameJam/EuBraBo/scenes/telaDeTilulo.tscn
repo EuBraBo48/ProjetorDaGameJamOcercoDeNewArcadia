@@ -79,6 +79,7 @@ text = "Quit"
 position = Vector2( 305, 102 )
 scale = Vector2( 9.20313, 9.95313 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 flip_h = true
 

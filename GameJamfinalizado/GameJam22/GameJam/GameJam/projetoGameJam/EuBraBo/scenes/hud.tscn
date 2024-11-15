@@ -126,7 +126,6 @@ position = Vector2( 379, 8 )
 scale = Vector2( 1.36718, 1.32031 )
 frames = SubResource( 5 )
 animation = "MOEDA"
-frame = 3
 playing = true
 
 [node name="LabelMoeda" type="Label" parent="AnimatedSpriteMoeda"]
